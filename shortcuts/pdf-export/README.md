@@ -1,8 +1,7 @@
 # PDF Export
 
 Share sheet action. Takes whatever you shared - selected text, one or several
-images, a Safari page, a file - turns it into a PDF, names it after the input,
-then offers a choice:
+images, a Safari page, a file - turns it into a PDF, then offers a choice:
 
 - **Preview** - Quick Look, from which you can still share or save
 - **Save to Files** - asks for a file name, then the normal document save
@@ -11,8 +10,9 @@ then offers a choice:
 
 Several selected images become one multi-page PDF.
 
-The name comes from the shared item: a web page gives its title, a file its
-filename. Shared text has no filename, so its own first line is used.
+It is meant to name the PDF after what you shared - a web page by its title, a
+file by its filename, and plain text by its own first line, since text has no
+filename of its own. That part is built but not yet working; see Known issues.
 
 ## Install
 
@@ -36,7 +36,9 @@ See the install link on https://poeggi.github.io/ios-shortcuts/
    **Save File** on that renamed item, **Ask Where to Save** on.
 10. Share branch: **Share**, input the Set Name output.
 11. Details (i) > **Show in Share Sheet** on > Share Sheet Types: leave only
-    Text, Rich Text, Images, URLs, Safari web pages, Files, PDFs.
+    Text, Rich Text, Images, URLs, Safari web pages, Files, PDFs. Not done yet
+    - all 18 types are still enabled, including contacts, phone numbers, dates
+    and Maps links.
 
 Three things to watch while building it:
 
@@ -47,11 +49,22 @@ Three things to watch while building it:
 - "Make sure to pass items to the Make PDF action" is a static editor warning.
   Shortcuts cannot prove at edit time that the share sheet will supply input.
 
-The steps above are the intended build. `sequence.md` is what the currently
-published link really contains, and the two do not match yet: the published
-version discards the computed name in all three branches, has the Save branch
-Set Name wired backwards, and pre-fills the rename prompt from the untrimmed
-name. Compare the two before editing.
+## Known issues
+
+The steps above are the intended build. `sequence.md` is what the published
+link really contains, and the naming does not work in it at all:
+
+- **Set Name's output is never used.** It returns a new renamed item, but the
+  Preview, Save and Share branches all take `PDF`, the raw Make PDF output. So
+  every branch gets an unnamed file.
+- **The Save branch Set Name is inverted.** It reads `Set Name of
+  [Ask for Input], name: [PDF]`, which names the typed text after the file.
+  The two chips need swapping.
+- **The rename prompt pre-fills from `Name`, not `Updated Text`,** so it offers
+  the untrimmed value. Sharing from Notes puts the whole note body in the
+  filename field.
+
+Fixing the first two makes the name work; the third makes it sensible for text.
 
 ## Archived copy
 
