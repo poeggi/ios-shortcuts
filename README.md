@@ -23,28 +23,44 @@ That path does not depend on Apple keeping the iCloud link alive.
 Every shortcut here is built by hand in the Shortcuts app and shared as an
 iCloud link. That link is what the Install buttons point at.
 
-Next to it, each shortcut folder keeps a copy pulled back down from iCloud:
+One folder per shortcut, `shortcuts/<slug>/`, each holding:
 
+- `README.md` - what it is for and how it was built, written by hand.
+- `sequence.md` - what the published version actually does, action by action,
+  with every variable reference resolved. Generated, never hand-edited.
 - `<slug>.plist` - the shortcut as a readable XML property list. This is what
   makes a shortcut diffable. It is not installable.
 - `<slug>.shortcut` - the signed file Apple's servers produced. This one does
-  install, by AirDrop or Files, but it is an opaque binary and its signing
-  certificate expires.
+  install, but it is an opaque binary and its signing certificate expires.
 
-Both are downloaded from `icloud.com/shortcuts/api/records/<id>`, which serves
-the record for any shared shortcut. They are snapshots for reference and
-recovery. The Shortcuts app is still the only editor, so neither file can be
-edited here and pushed back.
+The last three are produced by `tools/fetch-shortcut.py`, which reads
+`shortcuts.json`, downloads each published shortcut from
+`icloud.com/shortcuts/api/records/<id>` and writes the folder. The endpoint is
+public and needs no authentication.
+
+```
+python tools/fetch-shortcut.py             # all entries
+python tools/fetch-shortcut.py pdf-export  # one slug
+python tools/fetch-shortcut.py --check     # verify only, write nothing
+```
+
+The Shortcuts app is still the only editor, so nothing here can be edited and
+pushed back. `--check` answers the question that matters instead: does the
+archive still match what the link publishes?
 
 ## Adding a shortcut
 
 1. Build or edit it in the Shortcuts app.
 2. Long-press it > Share > **iCloud Link** > Copy.
 3. Add an entry to `shortcuts.json` with that link in `icloud`.
-4. Archive the copy from `icloud.com/shortcuts/api/records/<id>`: the record
-   JSON has a `shortcut` asset (the plist) and a `signedShortcut` asset.
+4. Run `python tools/fetch-shortcut.py <slug>` to write the archive folder.
+5. Commit both.
 
-The website renders `shortcuts.json`, so step 3 is what publishes it.
+The website renders `shortcuts.json`, so step 3 is what publishes it. Step 4 is
+what makes the Mirror button work and what records the action sequence.
+
+Re-sharing an edited shortcut always mints a **new** link, so an edit means
+repeating steps 2 to 5.
 
 ## Note on iCloud links
 

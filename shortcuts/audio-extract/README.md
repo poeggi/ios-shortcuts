@@ -23,7 +23,10 @@ Two actions, no menu. Everything else happens in the Quick Look share sheet.
 
 ## Archived copy
 
-`audio-extract.plist` is the published shortcut as readable XML, and
-`audio-extract.shortcut` is Apple's signed, installable version. Both were
-pulled from the iCloud record behind the install link. See the top-level
-README.
+- `sequence.md` - what the published version actually does, action by action,
+  generated from the plist. Read this before editing anything.
+- `audio-extract.plist` - the published shortcut as readable XML.
+- `audio-extract.shortcut` - Apple's signed, installable version.
+
+All three come from `tools/fetch-shortcut.py`, which pulls them back down from
+the iCloud record behind the install link.

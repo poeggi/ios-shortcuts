@@ -47,8 +47,18 @@ Three things to watch while building it:
 - "Make sure to pass items to the Make PDF action" is a static editor warning.
   Shortcuts cannot prove at edit time that the share sheet will supply input.
 
+The steps above are the intended build. `sequence.md` is what the currently
+published link really contains, and the two do not match yet: the published
+version discards the computed name in all three branches, has the Save branch
+Set Name wired backwards, and pre-fills the rename prompt from the untrimmed
+name. Compare the two before editing.
+
 ## Archived copy
 
-`pdf-export.plist` is the published shortcut as readable XML, and
-`pdf-export.shortcut` is Apple's signed, installable version. Both were pulled
-from the iCloud record behind the install link. See the top-level README.
+- `sequence.md` - what the published version actually does, action by action,
+  generated from the plist. Read this before editing anything.
+- `pdf-export.plist` - the published shortcut as readable XML.
+- `pdf-export.shortcut` - Apple's signed, installable version.
+
+All three come from `tools/fetch-shortcut.py`, which pulls them back down from
+the iCloud record behind the install link.
