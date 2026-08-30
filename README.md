@@ -12,6 +12,7 @@ Open that page on the iPhone and tap Install. Every Install button is an
 | Shortcut | What it does | Install |
 |---|---|---|
 | [PDF Export](shortcuts/pdf-export/) | Share sheet: text, images, a web page or a file becomes a PDF, then Preview or Save to Files | [Install](https://www.icloud.com/shortcuts/ed01ebfbfa4741008a6463c9539f064d) |
+| [Audio Extract](shortcuts/audio-extract/) | Share sheet: pulls the audio track out of a video as an M4A, shown in Quick Look | [Install](https://www.icloud.com/shortcuts/586d84359bc64766ab39687fe10f53ba) |
 
 ## Install links, plus an archived copy
 

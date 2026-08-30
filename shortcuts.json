@@ -8,6 +8,14 @@
       "tags": ["share sheet", "pdf", "files"],
       "icloud": "https://www.icloud.com/shortcuts/ed01ebfbfa4741008a6463c9539f064d",
       "notes": "shortcuts/pdf-export/README.md"
+    },
+    {
+      "name": "Audio Extract",
+      "slug": "audio-extract",
+      "summary": "Share sheet action. Pulls the audio track out of a video as an M4A and opens it in Quick Look, ready to share or save.",
+      "tags": ["share sheet", "audio", "video"],
+      "icloud": "https://www.icloud.com/shortcuts/586d84359bc64766ab39687fe10f53ba",
+      "notes": "shortcuts/audio-extract/README.md"
     }
   ]
 }
