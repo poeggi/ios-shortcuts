@@ -1,0 +1,80 @@
+{
+  "color": "#fe9949",
+  "expires": "2027-09-23",
+  "glyph": 61505,
+  "inputs": [
+    "WFAppContentItem",
+    "WFImageContentItem",
+    "WFAVAssetContentItem"
+  ],
+  "name": "Audio Extract",
+  "published": "Audio Extract",
+  "record": "586d84359bc64766ab39687fe10f53ba",
+  "shared": "2026-08-30 11:07 UTC",
+  "signing": "APPROVED",
+  "sizes": {
+    "icon": 53049,
+    "plist": 2560,
+    "signed": 21957
+  },
+  "slug": "audio-extract",
+  "steps": [
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 1,
+      "name": "Encode Media",
+      "params": [
+        {
+          "label": "metadata",
+          "value": [
+            {
+              "t": "text",
+              "v": "off"
+            }
+          ]
+        },
+        {
+          "label": "audio format",
+          "value": [
+            {
+              "t": "text",
+              "v": "M4A"
+            }
+          ]
+        },
+        {
+          "label": "audio only",
+          "value": [
+            {
+              "t": "text",
+              "v": "on"
+            }
+          ]
+        }
+      ],
+      "target": [
+        {
+          "t": "var",
+          "v": "Shortcut Input"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 2,
+      "name": "Quick Look",
+      "params": [],
+      "target": [
+        {
+          "t": "var",
+          "v": "Encoded Media"
+        }
+      ]
+    }
+  ],
+  "types": [
+    "ActionExtension"
+  ]
+}

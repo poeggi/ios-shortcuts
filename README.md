@@ -28,18 +28,25 @@ One folder per shortcut, `shortcuts/<slug>/`, each holding:
 - `README.md` - what it is for and how it was built, written by hand.
 - `sequence.md` - what the published version actually does, action by action,
   with every variable reference resolved. Generated, never hand-edited.
+- `sequence.json` - the same action list as data, which is what the website
+  renders. Generated.
 - `<slug>.plist` - the shortcut as a readable XML property list. This is what
   makes a shortcut diffable. It is not installable.
 - `<slug>.shortcut` - the signed file Apple's servers produced. This one does
   install, but it is an opaque binary and its signing certificate expires.
 - `<slug>.png` - the icon iOS renders for the shortcut, 450x450. The website
-  shows it on the card. The plist itself only stores a glyph number and a
-  colour, so this rendered image comes from the iCloud record.
+  shows it, and a pasted link previews with it. The plist itself only stores a
+  glyph number and a colour, so this rendered image comes from the iCloud
+  record.
+- `index.html` - the shortcut's own page at
+  `poeggi.github.io/ios-shortcuts/shortcuts/<slug>/`. Generated: it is only
+  link-preview metadata plus a call into the shared renderer.
 
-The last four are produced by `tools/fetch-shortcut.py`, which reads
-`shortcuts.json`, downloads each published shortcut from
-`icloud.com/shortcuts/api/records/<id>` and writes the folder. The endpoint is
-public and needs no authentication.
+Everything except the first is produced by `tools/fetch-shortcut.py`, which
+reads `shortcuts.json`, downloads each published shortcut from
+`icloud.com/shortcuts/api/records/<id>` and writes the folder. It also writes
+`og.png`, the site's link preview image. The endpoint is public and needs no
+authentication.
 
 ```
 python tools/fetch-shortcut.py             # all entries
@@ -63,10 +70,16 @@ The website renders `shortcuts.json`, so step 3 is what publishes it. Step 4 is
 what makes the Mirror button work and what records the action sequence.
 
 **Rule: every shortcut ships its icon.** `<slug>.png` is not optional. The
-website shows it on the card, so an entry without one looks broken. Step 4
-fetches it automatically; never commit a shortcut folder without it, and if the
-icon changes in the Shortcuts app, re-share and re-run step 4 so the site
-matches.
+website shows it on the card and link previews use it, so an entry without one
+looks broken. Step 4 fetches it automatically; never commit a shortcut folder
+without it, and if the icon changes in the Shortcuts app, re-share and re-run
+step 4 so the site matches.
+
+**Rule: the look lives in `style.css` and `render.js`, nowhere else.** Neither
+`index.html` at the root nor a generated `shortcuts/<slug>/index.html` carries
+its own styling, and a generated page is never hand-edited. That is what keeps
+every entry looking the same, including ones added later: change a token in
+`style.css` once and every card and every action list follows.
 
 Re-sharing an edited shortcut always mints a **new** link, so an edit means
 repeating steps 2 to 5.

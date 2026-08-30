@@ -1,0 +1,299 @@
+{
+  "color": "#ff4351",
+  "expires": "2027-09-22",
+  "glyph": 61697,
+  "inputs": [
+    "WFImageContentItem",
+    "WFAVAssetContentItem",
+    "WFGenericFileContentItem",
+    "WFFolderContentItem",
+    "WFPDFContentItem",
+    "WFStringContentItem",
+    "WFRichTextContentItem",
+    "WFSafariWebPageContentItem",
+    "WFURLContentItem",
+    "WFArticleContentItem",
+    "WFDCMapsLinkContentItem",
+    "WFLocationContentItem",
+    "WFContactContentItem",
+    "WFEmailAddressContentItem",
+    "WFPhoneNumberContentItem",
+    "WFAppStoreAppContentItem",
+    "WFiTunesProductContentItem",
+    "WFDateContentItem"
+  ],
+  "name": "PDF Export",
+  "published": "PDF Export",
+  "record": "c74fd0e9d5ca44779cc5d71ec335db47",
+  "shared": "2026-08-30 14:59 UTC",
+  "signing": "APPROVED",
+  "sizes": {
+    "icon": 42810,
+    "plist": 11877,
+    "signed": 23455
+  },
+  "slug": "pdf-export",
+  "steps": [
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 1,
+      "name": "Get Item from List",
+      "params": [],
+      "target": [
+        {
+          "t": "var",
+          "v": "Shortcut Input"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 2,
+      "name": "Get Name",
+      "params": [],
+      "target": [
+        {
+          "t": "var",
+          "v": "Item from List"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 3,
+      "name": "Replace Text",
+      "params": [
+        {
+          "label": "case sensitive",
+          "value": [
+            {
+              "t": "text",
+              "v": "off"
+            }
+          ]
+        },
+        {
+          "label": "find",
+          "value": [
+            {
+              "t": "text",
+              "v": "\\n[\\s\\S]*"
+            }
+          ]
+        },
+        {
+          "label": "regular expression",
+          "value": [
+            {
+              "t": "text",
+              "v": "on"
+            }
+          ]
+        },
+        {
+          "label": "replace with",
+          "value": [
+            {
+              "t": "text",
+              "v": "(empty)"
+            }
+          ]
+        }
+      ],
+      "target": [
+        {
+          "t": "var",
+          "v": "Name"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 4,
+      "name": "Make PDF",
+      "params": [],
+      "target": [
+        {
+          "t": "var",
+          "v": "Shortcut Input"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 5,
+      "name": "Set Name",
+      "params": [
+        {
+          "label": "name",
+          "value": [
+            {
+              "t": "var",
+              "v": "Updated Text"
+            }
+          ]
+        }
+      ],
+      "target": [
+        {
+          "t": "var",
+          "v": "PDF"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 6,
+      "name": "Choose from Menu",
+      "params": [
+        {
+          "label": "items",
+          "value": [
+            {
+              "t": "text",
+              "v": "Preview, Save to Files, Share"
+            }
+          ]
+        },
+        {
+          "label": "prompt",
+          "value": [
+            {
+              "t": "text",
+              "v": "Export as PDF"
+            }
+          ]
+        }
+      ],
+      "target": null
+    },
+    {
+      "depth": 0,
+      "kind": "case",
+      "name": "Preview"
+    },
+    {
+      "depth": 1,
+      "kind": "action",
+      "n": 7,
+      "name": "Quick Look",
+      "params": [],
+      "target": [
+        {
+          "t": "var",
+          "v": "PDF"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "case",
+      "name": "Save to Files"
+    },
+    {
+      "depth": 1,
+      "kind": "action",
+      "n": 8,
+      "name": "Ask for Input",
+      "params": [
+        {
+          "label": "multiline",
+          "value": [
+            {
+              "t": "text",
+              "v": "off"
+            }
+          ]
+        },
+        {
+          "label": "default answer",
+          "value": [
+            {
+              "t": "var",
+              "v": "Name"
+            }
+          ]
+        },
+        {
+          "label": "prompt",
+          "value": [
+            {
+              "t": "text",
+              "v": "File Name"
+            }
+          ]
+        }
+      ],
+      "target": null
+    },
+    {
+      "depth": 1,
+      "kind": "action",
+      "n": 9,
+      "name": "Set Name",
+      "params": [
+        {
+          "label": "name",
+          "value": [
+            {
+              "t": "var",
+              "v": "PDF"
+            }
+          ]
+        }
+      ],
+      "target": [
+        {
+          "t": "var",
+          "v": "Ask for Input"
+        }
+      ]
+    },
+    {
+      "depth": 1,
+      "kind": "action",
+      "n": 10,
+      "name": "Save File",
+      "params": [],
+      "target": [
+        {
+          "t": "var",
+          "v": "PDF"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "case",
+      "name": "Share"
+    },
+    {
+      "depth": 1,
+      "kind": "action",
+      "n": 11,
+      "name": "Share",
+      "params": [],
+      "target": [
+        {
+          "t": "var",
+          "v": "PDF"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "end",
+      "name": "Choose from Menu"
+    }
+  ],
+  "types": [
+    "ActionExtension",
+    "Watch"
+  ]
+}
