@@ -1,0 +1,255 @@
+{
+  "color": "#db49d8",
+  "expires": "2027-09-28",
+  "glyph": 59814,
+  "inputs": [
+    "WFAppContentItem",
+    "WFContactContentItem",
+    "WFPhoneNumberContentItem"
+  ],
+  "name": "Busy Redialer",
+  "published": "Busy Redialer",
+  "record": "7c55f05daaa745a69645c69ba2469e8a",
+  "shared": "2026-08-30 17:51 UTC",
+  "signing": "APPROVED",
+  "sizes": {
+    "icon": 43156,
+    "plist": 7930,
+    "signed": 23063
+  },
+  "slug": "busy-redialer",
+  "steps": [
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 1,
+      "name": "Get Phone Numbers from Input",
+      "params": [],
+      "target": [
+        {
+          "t": "var",
+          "v": "Shortcut Input"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 2,
+      "name": "Set Variable",
+      "params": [
+        {
+          "label": "variable",
+          "value": [
+            {
+              "t": "text",
+              "v": "NumberToCall"
+            }
+          ]
+        }
+      ],
+      "target": [
+        {
+          "t": "var",
+          "v": "Phone Numbers"
+        }
+      ]
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 3,
+      "name": "Ask for Input",
+      "params": [
+        {
+          "label": "allow decimals",
+          "value": [
+            {
+              "t": "text",
+              "v": "off"
+            }
+          ]
+        },
+        {
+          "label": "allow negatives",
+          "value": [
+            {
+              "t": "text",
+              "v": "off"
+            }
+          ]
+        },
+        {
+          "label": "default answer",
+          "value": [
+            {
+              "t": "text",
+              "v": "50"
+            }
+          ]
+        },
+        {
+          "label": "prompt",
+          "value": [
+            {
+              "t": "text",
+              "v": "Repeat Count"
+            }
+          ]
+        },
+        {
+          "label": "input type",
+          "value": [
+            {
+              "t": "text",
+              "v": "Number"
+            }
+          ]
+        }
+      ],
+      "target": null
+    },
+    {
+      "depth": 0,
+      "kind": "action",
+      "n": 4,
+      "name": "Repeat",
+      "params": [
+        {
+          "label": "count",
+          "value": [
+            {
+              "t": "var",
+              "v": "Ask for Input"
+            }
+          ]
+        }
+      ],
+      "target": null
+    },
+    {
+      "depth": 1,
+      "kind": "action",
+      "n": 5,
+      "name": "Is Call Active",
+      "params": [
+        {
+          "label": "app",
+          "value": [
+            {
+              "t": "text",
+              "v": "Actions"
+            }
+          ]
+        }
+      ],
+      "target": null
+    },
+    {
+      "depth": 1,
+      "kind": "action",
+      "n": 6,
+      "name": "If",
+      "params": [
+        {
+          "label": "condition",
+          "value": [
+            {
+              "t": "text",
+              "v": "is"
+            }
+          ]
+        }
+      ],
+      "target": [
+        {
+          "t": "var",
+          "v": "Is Call Active"
+        }
+      ]
+    },
+    {
+      "depth": 1,
+      "kind": "case",
+      "name": "Otherwise"
+    },
+    {
+      "depth": 2,
+      "kind": "action",
+      "n": 7,
+      "name": "Wait",
+      "params": [
+        {
+          "label": "seconds",
+          "value": [
+            {
+              "t": "text",
+              "v": "3.0"
+            }
+          ]
+        }
+      ],
+      "target": null
+    },
+    {
+      "depth": 2,
+      "kind": "action",
+      "n": 8,
+      "name": "Call",
+      "params": [
+        {
+          "label": "app",
+          "value": [
+            {
+              "t": "text",
+              "v": "Phone"
+            }
+          ]
+        },
+        {
+          "label": "number",
+          "value": [
+            {
+              "t": "var",
+              "v": "NumberToCall"
+            }
+          ]
+        }
+      ],
+      "target": null
+    },
+    {
+      "depth": 2,
+      "kind": "action",
+      "n": 9,
+      "name": "Wait",
+      "params": [
+        {
+          "label": "seconds",
+          "value": [
+            {
+              "t": "text",
+              "v": "3.0"
+            }
+          ]
+        }
+      ],
+      "target": null
+    },
+    {
+      "depth": 1,
+      "kind": "end",
+      "name": "If"
+    },
+    {
+      "depth": 0,
+      "kind": "end",
+      "name": "Repeat"
+    }
+  ],
+  "types": [
+    "ActionExtension",
+    "Watch",
+    "WFWorkflowTypeShowInSearch"
+  ]
+}

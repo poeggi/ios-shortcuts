@@ -17,6 +17,7 @@ That path does not depend on Apple keeping the iCloud link alive.
 |---|---|---|
 | [PDF Export](shortcuts/pdf-export/) | Share sheet: text, images, a web page or a file becomes a PDF, then Preview, Save to Files or Share | [Install](https://www.icloud.com/shortcuts/607b9640b279421eb17dc8d112db2ad5) |
 | [Audio Extract](shortcuts/audio-extract/) | Share sheet: pulls the audio track out of a video as an M4A, shown in Quick Look | [Install](https://www.icloud.com/shortcuts/586d84359bc64766ab39687fe10f53ba) |
+| [Busy Redialer](shortcuts/busy-redialer/) | Share sheet: redials a phone number until the call connects, with a repeat count you set | [Install](https://www.icloud.com/shortcuts/7c55f05daaa745a69645c69ba2469e8a) |
 
 ## Install links, plus an archived copy
 

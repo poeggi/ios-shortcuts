@@ -55,6 +55,8 @@ NAMES = {
     "choosefrommenu": "Choose from Menu",
     "encodemedia": "Encode Media",
     "detect.text": "Get Text from Input",
+    "detect.phonenumber": "Get Phone Numbers from Input",
+    "delay": "Wait",
     "conditional": "If",
     "repeat.count": "Repeat",
     "repeat.each": "Repeat with Each Item",
@@ -101,14 +103,44 @@ LABELS = {
     "WFGetItemFromListItemSpecifier": "item",
     "WFTextSeparator": "separator",
     "Show-WFInput": "show input",
+    "WFRepeatCount": "count",
+    "WFDelayTime": "seconds",
+    "WFCallContact": "number",
+    "WFCondition": "condition",
+    "WFInputType": "input type",
+    "WFAskActionDefaultAnswerNumber": "default answer",
+    "WFAskActionAllowsDecimalNumbers": "allow decimals",
+    "WFAskActionAllowsNegativeNumbers": "allow negatives",
+    "AppIntentDescriptor": "app",
+    "IntentAppDefinition": "app",
+}
+
+# An action supplied by an app, not by Shortcuts, names the app here.
+APP_KEYS = ("AppIntentDescriptor", "IntentAppDefinition")
+
+# Comparison codes of the If action. Only the one in use is named.
+CONDITIONS = {4: "is"}
+
+# WFWorkflowTypes as the Shortcuts app words them.
+RUNS_AS = {
+    "ActionExtension": "Share Sheet",
+    "WFWorkflowTypeShowInSearch": "Spotlight",
+    "NCWidget": "Widget",
+    "Watch": "Watch",
+    "Sleep": "Sleep Focus",
 }
 
 
 def friendly(identifier):
-    short = identifier[len(PREFIX):] if identifier.startswith(PREFIX) else identifier
-    if short in NAMES:
-        return NAMES[short]
-    words = re.split(r"[._]", short)
+    if identifier.startswith(PREFIX):
+        short = identifier[len(PREFIX):]
+        if short in NAMES:
+            return NAMES[short]
+        words = re.split(r"[._]", short)
+    else:
+        # An app's own action: com.vendor.App.IsCallActive is Is Call Active.
+        words = re.findall(r"[A-Z]+(?![a-z])|[A-Z][a-z0-9]*|[a-z0-9]+",
+                           identifier.rsplit(".", 1)[-1])
     return " ".join(w[:1].upper() + w[1:] for w in words if w)
 
 
@@ -121,10 +153,14 @@ def reference(value):
         return mark(value.get("OutputName", "output"))
     if kind == "Variable":
         name = value.get("VariableName")
-        if not name:
-            nested = value.get("Variable", {})
-            if isinstance(nested, dict):
-                name = nested.get("Value", {}).get("VariableName")
+        nested = value.get("Variable")
+        if not name and isinstance(nested, dict):
+            inner = nested.get("Value", nested)
+            if isinstance(inner, dict):
+                # A wrapped reference, such as an If reading an action output.
+                if inner.get("Type"):
+                    return reference(inner)
+                name = inner.get("VariableName")
         return mark(name or "variable")
     if kind == "Ask":
         return mark("Ask Each Time")
@@ -133,6 +169,8 @@ def reference(value):
 
 def token(value):
     """Render a parameter value, resolving embedded variable attachments."""
+    if isinstance(value, dict) and "Type" in value and "Value" not in value:
+        return reference(value)
     if isinstance(value, dict) and "WFSerializationType" in value:
         kind = value["WFSerializationType"]
         inner = value.get("Value")
@@ -185,6 +223,15 @@ def pieces(text):
     return out
 
 
+def param(key, raw):
+    """A parameter value, with the keys that carry a code or a payload named."""
+    if key in APP_KEYS and isinstance(raw, dict):
+        return str(raw.get("Name", "")) or token(raw)
+    if key == "WFCondition":
+        return CONDITIONS.get(raw, str(raw))
+    return token(raw)
+
+
 def steps(actions):
     """Structured action list. Both sequence.md and the website render this,
     so the two can never drift apart."""
@@ -219,7 +266,7 @@ def steps(actions):
             if key in SKIP:
                 continue
             entry["params"].append({"label": LABELS.get(key, key),
-                                    "value": show(token(params[key])) or "(empty)"})
+                                    "value": show(param(key, params[key])) or "(empty)"})
         out.append(entry)
 
         if mode == 0:
@@ -262,7 +309,8 @@ def stamp(milliseconds):
 
 def sequence_markdown(name, slug, record, plist, sizes, items):
     fields = record["fields"]
-    types = ", ".join(plist.get("WFWorkflowTypes") or ["(none)"])
+    types = ", ".join(RUNS_AS.get(t, t)
+                      for t in plist.get("WFWorkflowTypes") or ["(none)"])
     inputs = plist.get("WFWorkflowInputContentItemClasses") or []
     out = [
         "# %s - action sequence" % name,

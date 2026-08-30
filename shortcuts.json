@@ -16,6 +16,14 @@
       "tags": ["share sheet", "audio", "video"],
       "icloud": "https://www.icloud.com/shortcuts/586d84359bc64766ab39687fe10f53ba",
       "notes": "shortcuts/audio-extract/README.md"
+    },
+    {
+      "name": "Busy Redialer",
+      "slug": "busy-redialer",
+      "summary": "Share sheet action. Dials a phone number again and again until the call connects, so a busy hotline redials itself. Asks how many attempts first.",
+      "tags": ["share sheet", "phone", "calls"],
+      "icloud": "https://www.icloud.com/shortcuts/7c55f05daaa745a69645c69ba2469e8a",
+      "notes": "shortcuts/busy-redialer/README.md"
     }
   ]
 }

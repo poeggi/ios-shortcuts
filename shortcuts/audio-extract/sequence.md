@@ -10,7 +10,7 @@ Do not edit by hand; re-run the script after re-sharing the shortcut.
 | Shared | 2026-08-30 11:07 UTC |
 | Signing | APPROVED |
 | Certificate expires | 2027-09-23 |
-| Runs as | ActionExtension |
+| Runs as | Share Sheet |
 | Accepts | 3 content types |
 | Actions | 2 |
 | Icon | glyph 61505, #fe9949 |
