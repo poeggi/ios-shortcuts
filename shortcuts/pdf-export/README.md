@@ -1,4 +1,4 @@
-# Export as PDF
+# PDF Export
 
 Share sheet action. Takes whatever you shared - selected text, one or several
 images, a Safari page, a file - turns it into a PDF, names it after the input,
@@ -18,7 +18,7 @@ See the install link on https://poeggi.github.io/ios-shortcuts/
 
 ## How it is built
 
-1. Shortcuts > **+** > tap the name at the top > **Rename** > `Export as PDF`.
+1. Shortcuts > **+** > tap the name at the top > **Rename** > `PDF Export`.
 2. **Get First Item** from **Shortcut Input**.
 3. **Get name of** that item, **Get Web Page Title** on.
 4. **Replace Text** in **Name**, **Regular Expression** on, find `\n[\s\S]*`,
@@ -27,7 +27,7 @@ See the install link on https://poeggi.github.io/ios-shortcuts/
 5. **Make PDF** from **Shortcut Input**.
 6. **Set Name** of the PDF to **Updated Text**, **Don't Include File
    Extension** on.
-7. **Choose from Menu**, prompt `Export as PDF`, two items: `Preview` and
+7. **Choose from Menu**, prompt `PDF Export`, two items: `Preview` and
    `Save to Files`.
 8. Inside the Preview branch: **Quick Look**, input the Set Name output.
 9. Inside the Save to Files branch: **Save File**, input the Set Name output,

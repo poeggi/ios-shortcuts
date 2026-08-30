@@ -2,12 +2,12 @@
   "title": "poeggi's iOS Shortcuts",
   "shortcuts": [
     {
-      "name": "Export as PDF",
-      "slug": "export-as-pdf",
+      "name": "PDF Export",
+      "slug": "pdf-export",
       "summary": "Share sheet action. Turns text, images, a web page or a file into a PDF, then asks: Preview it, or Save it through the Files save dialog.",
       "tags": ["share sheet", "pdf", "files"],
       "icloud": "https://www.icloud.com/shortcuts/140449cd83304eda97aa4c1838a2c4cd",
-      "notes": "shortcuts/export-as-pdf/README.md"
+      "notes": "shortcuts/pdf-export/README.md"
     }
   ]
 }
