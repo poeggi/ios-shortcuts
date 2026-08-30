@@ -1,7 +1,7 @@
 # PDF Export
 
 Share sheet action. Takes whatever you shared - selected text, one or several
-images, a Safari page, a file - turns it into a PDF, then offers a choice:
+images, a Safari page, a file - turns it into a PDF, then offers to:
 
 - **Preview** - Quick Look, from which you can still share or save
 - **Save to Files** - asks for a file name, then the normal document save
