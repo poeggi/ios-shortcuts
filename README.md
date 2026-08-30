@@ -75,6 +75,9 @@ looks broken. Step 4 fetches it automatically; never commit a shortcut folder
 without it, and if the icon changes in the Shortcuts app, re-share and re-run
 step 4 so the site matches.
 
+**Rule: keep the prose short.** These notes get read on a phone. One idea per
+sentence. Split a sentence rather than let it run to three lines.
+
 **Rule: the look lives in `style.css` and `render.js`, nowhere else.** Neither
 `index.html` at the root nor a generated `shortcuts/<slug>/index.html` carries
 its own styling, and a generated page is never hand-edited. That is what keeps
