@@ -16,11 +16,12 @@
     --accent-text: #ffffff;
     --chip: #ececf1;
     --radius-card: 16px;
-    --radius-icon: 12px;
+    --radius-ctl: 9px;
     --radius-pill: 100px;
     --pad-card: 14px 16px;
-    --gap: 10px;
-    --tap: 44px;
+    --gap: 8px;
+    --icon: 22px;
+    --ctl-h: 34px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -56,11 +57,11 @@
   }
   .head {
     display: flex; align-items: center; flex-wrap: wrap;
-    gap: 8px 12px; margin-bottom: 10px;
+    gap: 6px 10px; margin-bottom: 8px;
   }
   .icon {
-    width: 44px; height: 44px; flex: 0 0 44px;
-    border-radius: var(--radius-icon); display: block;
+    width: var(--icon); height: var(--icon); flex: 0 0 var(--icon);
+    aspect-ratio: 1; border-radius: 23%; display: block;
     background: var(--chip);
   }
   .card h2 {
@@ -76,15 +77,15 @@
     font-size: 11px; line-height: 18px; padding: 0 8px;
     border-radius: var(--radius-pill); white-space: nowrap;
   }
-  .card p { margin: 0 0 12px; color: var(--dim); font-size: 15px; }
+  .card p { margin: 0 0 10px; color: var(--dim); font-size: 15px; }
   .row { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: center; }
   .btn {
     display: inline-flex; align-items: center; justify-content: center;
     text-decoration: none;
     background: var(--accent); color: var(--accent-text);
-    font-weight: 600; font-size: 15px;
-    padding: 0 20px; border-radius: var(--radius-pill);
-    min-height: var(--tap); border: 1px solid transparent;
+    font-weight: 600; font-size: 14px;
+    padding: 0 14px; border-radius: var(--radius-ctl);
+    height: var(--ctl-h); border: 1px solid transparent;
   }
   .btn.pending {
     background: var(--chip); color: var(--dim); font-weight: 500;
@@ -96,7 +97,7 @@
   }
   .link {
     color: var(--accent); text-decoration: none; font-size: 14px;
-    display: inline-flex; align-items: center; min-height: var(--tap);
+    display: inline-flex; align-items: center; height: var(--ctl-h);
     padding: 0 4px;
   }
   footer {
@@ -137,7 +138,7 @@ fetch('shortcuts.json')
     document.getElementById('list').innerHTML = data.shortcuts.map(s => {
       const dir = s.slug ? `shortcuts/${encodeURIComponent(s.slug)}/${encodeURIComponent(s.slug)}` : '';
       const icon = dir
-        ? `<img class="icon" src="${dir}.png" width="44" height="44" alt="" onerror="this.remove()">`
+        ? `<img class="icon" src="${dir}.png" alt="" onerror="this.remove()">`
         : '';
       const tags = (s.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('');
       const install = s.icloud
