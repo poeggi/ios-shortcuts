@@ -45,7 +45,11 @@ body {
 }
 main { max-width: 720px; margin: 0 auto; }
 h1 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 4px; }
-h2 { font-size: 18px; margin: 0; letter-spacing: -0.01em; }
+h2 {
+  font-size: 18px; margin: 0; letter-spacing: -0.01em;
+  min-width: 0; white-space: nowrap; overflow: hidden;
+  text-overflow: ellipsis;
+}
 .lede { color: var(--dim); font-size: 15px; margin: 0 0 20px; }
 .back {
   display: inline-block; color: var(--accent); text-decoration: none;
@@ -60,9 +64,11 @@ h2 { font-size: 18px; margin: 0; letter-spacing: -0.01em; }
   padding: var(--pad-card);
   margin-bottom: var(--gap);
 }
+/* Title and tags share one row. The tags keep their width and a long name
+   truncates instead, so no card grows a second header line. */
 .head {
-  display: flex; align-items: center; flex-wrap: wrap;
-  gap: 6px 10px; margin-bottom: 8px;
+  display: flex; align-items: center; flex-wrap: nowrap;
+  gap: 8px; margin-bottom: 8px;
 }
 .icon {
   width: var(--icon); height: var(--icon); flex: 0 0 var(--icon);
@@ -70,15 +76,21 @@ h2 { font-size: 18px; margin: 0; letter-spacing: -0.01em; }
   background: var(--chip);
 }
 .tags {
-  display: flex; flex-wrap: wrap; gap: 5px;
+  display: flex; flex-wrap: nowrap; gap: 4px; flex: 0 0 auto;
   margin-left: auto; justify-content: flex-end;
 }
 .tag {
   background: var(--chip); color: var(--dim);
-  font-size: 11px; line-height: 18px; padding: 0 8px;
+  font-size: 11px; line-height: 18px; padding: 0 6px;
   border-radius: var(--radius-pill); white-space: nowrap;
 }
-.card p { margin: 0 0 10px; color: var(--dim); font-size: 15px; }
+/* A summary stops at three lines, so cards stay even down the list. The
+   summaries are written to fit; this is the guard, not the trim. */
+.card p {
+  margin: 0 0 10px; color: var(--dim); font-size: 15px;
+  display: -webkit-box; -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden;
+}
 .row { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: center; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;

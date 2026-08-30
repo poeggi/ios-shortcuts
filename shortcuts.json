@@ -4,7 +4,7 @@
     {
       "name": "PDF Export",
       "slug": "pdf-export",
-      "summary": "Share sheet action. Turns text, images, a web page or a file into a PDF, then asks: Preview it, Save it through the Files save dialog, or Share it.",
+      "summary": "Share sheet action. Turns text, images, a web page or a file into a PDF, then previews, saves or shares it.",
       "tags": ["share sheet", "pdf", "files"],
       "icloud": "https://www.icloud.com/shortcuts/607b9640b279421eb17dc8d112db2ad5",
       "notes": "shortcuts/pdf-export/README.md"
@@ -20,7 +20,7 @@
     {
       "name": "Busy Redialer",
       "slug": "busy-redialer",
-      "summary": "Share sheet action. Dials a phone number again and again until the call connects, so a busy hotline redials itself. Asks how many attempts first.",
+      "summary": "Share sheet action. Redials a phone number until the call connects. You set how many attempts first.",
       "tags": ["share sheet", "phone", "calls"],
       "icloud": "https://www.icloud.com/shortcuts/7c55f05daaa745a69645c69ba2469e8a",
       "notes": "shortcuts/busy-redialer/README.md"
