@@ -11,7 +11,7 @@ Open that page on the iPhone and tap Install. Every Install button is an
 
 | Shortcut | What it does | Install |
 |---|---|---|
-| [Export as PDF](shortcuts/export-as-pdf/) | Share sheet: text, images, a web page or a file becomes a PDF, then Preview or Save to Files | not published yet |
+| [Export as PDF](shortcuts/export-as-pdf/) | Share sheet: text, images, a web page or a file becomes a PDF, then Preview or Save to Files | [Install](https://www.icloud.com/shortcuts/140449cd83304eda97aa4c1838a2c4cd) |
 
 ## Links only, never files
 
