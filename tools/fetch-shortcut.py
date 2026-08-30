@@ -5,6 +5,7 @@ Reads shortcuts.json, and for each entry with an `icloud` link:
 
   shortcuts/<slug>/<slug>.plist      readable XML, diffable, not installable
   shortcuts/<slug>/<slug>.shortcut   Apple-signed, installable, opaque
+  shortcuts/<slug>/<slug>.png        the icon iOS renders, used by the website
   shortcuts/<slug>/sequence.md       generated action-by-action description
 
 An iCloud link is a snapshot, so this is also the check that the published
@@ -199,6 +200,14 @@ def describe(actions):
     return lines
 
 
+def icon_color(plist):
+    """WFWorkflowIconStartColor is a 32-bit RGBA value; drop the alpha byte."""
+    raw = (plist.get("WFWorkflowIcon") or {}).get("WFWorkflowIconStartColor")
+    if not isinstance(raw, int):
+        return None
+    return "#%06x" % ((raw & 0xFFFFFFFF) >> 8)
+
+
 def stamp(milliseconds):
     return datetime.datetime.fromtimestamp(milliseconds / 1000, datetime.timezone.utc)
 
@@ -224,8 +233,11 @@ def sequence_markdown(name, slug, record, plist, sizes):
         "| Runs as | %s |" % types,
         "| Accepts | %d content types |" % len(inputs),
         "| Actions | %d |" % len(plist["WFWorkflowActions"]),
-        "| Archived | `%s.plist` %d B, `%s.shortcut` %d B |" % (
-            slug, sizes["plist"], slug, sizes["signed"]),
+        "| Icon | glyph %s, %s |" % (
+            (plist.get("WFWorkflowIcon") or {}).get("WFWorkflowIconGlyphNumber", "?"),
+            icon_color(plist) or "unknown"),
+        "| Archived | `%s.plist` %d B, `%s.shortcut` %d B, `%s.png` %d B |" % (
+            slug, sizes["plist"], slug, sizes["signed"], slug, sizes["icon"]),
         "",
         "## Steps",
         "",
@@ -260,12 +272,14 @@ def process(entry, check_only):
     fields = record["fields"]
     raw = fetch(fields["shortcut"]["value"]["downloadURL"].replace("${f}", "s.plist"))
     signed = fetch(fields["signedShortcut"]["value"]["downloadURL"].replace("${f}", "s.shortcut"))
+    icon = fetch(fields["icon"]["value"]["downloadURL"].replace("${f}", "s.png"))
     plist = plistlib.loads(raw)
     xml = plistlib.dumps(plist, fmt=plistlib.FMT_XML)
 
     folder = os.path.join(ROOT, "shortcuts", slug)
     plist_path = os.path.join(folder, slug + ".plist")
     signed_path = os.path.join(folder, slug + ".shortcut")
+    icon_path = os.path.join(folder, slug + ".png")
     sequence_path = os.path.join(folder, "sequence.md")
 
     if check_only:
@@ -282,11 +296,13 @@ def process(entry, check_only):
         os.makedirs(folder)
     io.open(plist_path, "wb").write(xml)
     io.open(signed_path, "wb").write(signed)
+    io.open(icon_path, "wb").write(icon)
     io.open(sequence_path, "w", encoding="utf-8", newline="\n").write(
         sequence_markdown(entry["name"], slug, record, plist,
-                          {"plist": len(xml), "signed": len(signed)}))
-    print("%-16s %-16s %d actions, %d B signed" % (
-        slug, fields["name"]["value"], len(plist["WFWorkflowActions"]), len(signed)))
+                          {"plist": len(xml), "signed": len(signed), "icon": len(icon)}))
+    print("%-16s %-16s %d actions, %d B signed, icon %s %d B" % (
+        slug, fields["name"]["value"], len(plist["WFWorkflowActions"]), len(signed),
+        icon_color(plist) or "?", len(icon)))
     return True
 
 

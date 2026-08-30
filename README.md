@@ -32,8 +32,11 @@ One folder per shortcut, `shortcuts/<slug>/`, each holding:
   makes a shortcut diffable. It is not installable.
 - `<slug>.shortcut` - the signed file Apple's servers produced. This one does
   install, but it is an opaque binary and its signing certificate expires.
+- `<slug>.png` - the icon iOS renders for the shortcut, 450x450. The website
+  shows it on the card. The plist itself only stores a glyph number and a
+  colour, so this rendered image comes from the iCloud record.
 
-The last three are produced by `tools/fetch-shortcut.py`, which reads
+The last four are produced by `tools/fetch-shortcut.py`, which reads
 `shortcuts.json`, downloads each published shortcut from
 `icloud.com/shortcuts/api/records/<id>` and writes the folder. The endpoint is
 public and needs no authentication.

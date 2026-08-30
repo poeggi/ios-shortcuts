@@ -13,7 +13,8 @@ Do not edit by hand; re-run the script after re-sharing the shortcut.
 | Runs as | ActionExtension |
 | Accepts | 3 content types |
 | Actions | 2 |
-| Archived | `audio-extract.plist` 2560 B, `audio-extract.shortcut` 21957 B |
+| Icon | glyph 61505, #fe9949 |
+| Archived | `audio-extract.plist` 2560 B, `audio-extract.shortcut` 21957 B, `audio-extract.png` 53049 B |
 
 ## Steps
 

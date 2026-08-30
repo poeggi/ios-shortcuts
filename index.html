@@ -47,7 +47,12 @@
     padding: 18px;
     margin-bottom: 14px;
   }
-  .card h2 { font-size: 19px; margin: 0 0 6px; letter-spacing: -0.01em; }
+  .head { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; }
+  .icon {
+    width: 52px; height: 52px; flex: 0 0 52px;
+    border-radius: 13px; display: block;
+  }
+  .card h2 { font-size: 19px; margin: 0; letter-spacing: -0.01em; }
   .card p { margin: 0 0 14px; color: var(--dim); font-size: 15px; }
   .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
   .tag {
@@ -116,8 +121,11 @@ fetch('shortcuts.json')
         ? `<a class="btn mirror" href="${file}" download>Mirror</a>` : '';
       const notes = s.notes
         ? `<a class="link" href="${REPO}${esc(s.notes)}">Details</a>` : '';
+      const icon = s.slug
+        ? `<img class="icon" src="shortcuts/${encodeURIComponent(s.slug)}/${encodeURIComponent(s.slug)}.png"
+             alt="" onerror="this.remove()">` : '';
       return `<div class="card">
-        <h2>${esc(s.name)}</h2>
+        <div class="head">${icon}<h2>${esc(s.name)}</h2></div>
         <p>${esc(s.summary)}</p>
         ${tags ? `<div class="tags">${tags}</div>` : ''}
         <div class="row">${install}${mirror}${notes}</div>

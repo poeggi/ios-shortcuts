@@ -13,7 +13,8 @@ Do not edit by hand; re-run the script after re-sharing the shortcut.
 | Runs as | ActionExtension, Watch |
 | Accepts | 18 content types |
 | Actions | 15 |
-| Archived | `pdf-export.plist` 11877 B, `pdf-export.shortcut` 23455 B |
+| Icon | glyph 61697, #ff4351 |
+| Archived | `pdf-export.plist` 11877 B, `pdf-export.shortcut` 23455 B, `pdf-export.png` 42810 B |
 
 ## Steps
 
