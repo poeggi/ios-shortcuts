@@ -15,7 +15,7 @@ That path does not depend on Apple keeping the iCloud link alive.
 
 | Shortcut | What it does | Install |
 |---|---|---|
-| [PDF Export](shortcuts/pdf-export/) | Share sheet: text, images, a web page or a file becomes a PDF, then Preview, Save to Files or Share | [Install](https://www.icloud.com/shortcuts/c74fd0e9d5ca44779cc5d71ec335db47) |
+| [PDF Export](shortcuts/pdf-export/) | Share sheet: text, images, a web page or a file becomes a PDF, then Preview, Save to Files or Share | [Install](https://www.icloud.com/shortcuts/607b9640b279421eb17dc8d112db2ad5) |
 | [Audio Extract](shortcuts/audio-extract/) | Share sheet: pulls the audio track out of a video as an M4A, shown in Quick Look | [Install](https://www.icloud.com/shortcuts/586d84359bc64766ab39687fe10f53ba) |
 
 ## Install links, plus an archived copy

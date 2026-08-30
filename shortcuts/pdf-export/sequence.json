@@ -1,36 +1,29 @@
 {
   "color": "#ff4351",
-  "expires": "2027-09-22",
+  "expires": "2027-09-23",
   "glyph": 61697,
   "inputs": [
     "WFImageContentItem",
-    "WFAVAssetContentItem",
     "WFGenericFileContentItem",
-    "WFFolderContentItem",
-    "WFPDFContentItem",
     "WFStringContentItem",
     "WFRichTextContentItem",
     "WFSafariWebPageContentItem",
-    "WFURLContentItem",
     "WFArticleContentItem",
     "WFDCMapsLinkContentItem",
     "WFLocationContentItem",
     "WFContactContentItem",
-    "WFEmailAddressContentItem",
-    "WFPhoneNumberContentItem",
-    "WFAppStoreAppContentItem",
-    "WFiTunesProductContentItem",
-    "WFDateContentItem"
+    "WFDateContentItem",
+    "WFPDFContentItem"
   ],
   "name": "PDF Export",
   "published": "PDF Export",
-  "record": "c74fd0e9d5ca44779cc5d71ec335db47",
-  "shared": "2026-08-30 14:59 UTC",
+  "record": "607b9640b279421eb17dc8d112db2ad5",
+  "shared": "2026-08-30 17:40 UTC",
   "signing": "APPROVED",
   "sizes": {
     "icon": 42810,
-    "plist": 11877,
-    "signed": 23455
+    "plist": 11619,
+    "signed": 23364
   },
   "slug": "pdf-export",
   "steps": [
@@ -187,7 +180,7 @@
       "target": [
         {
           "t": "var",
-          "v": "PDF"
+          "v": "Renamed Item"
         }
       ]
     },
@@ -243,7 +236,7 @@
           "value": [
             {
               "t": "var",
-              "v": "PDF"
+              "v": "Ask for Input"
             }
           ]
         }
@@ -251,7 +244,7 @@
       "target": [
         {
           "t": "var",
-          "v": "Ask for Input"
+          "v": "Renamed Item"
         }
       ]
     },
@@ -264,7 +257,7 @@
       "target": [
         {
           "t": "var",
-          "v": "PDF"
+          "v": "Renamed Item"
         }
       ]
     },
@@ -282,7 +275,7 @@
       "target": [
         {
           "t": "var",
-          "v": "PDF"
+          "v": "Renamed Item"
         }
       ]
     },

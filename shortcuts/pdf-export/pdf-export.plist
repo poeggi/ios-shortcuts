@@ -193,9 +193,9 @@
 					<key>Value</key>
 					<dict>
 						<key>OutputName</key>
-						<string>PDF</string>
+						<string>Renamed Item</string>
 						<key>OutputUUID</key>
-						<string>DD2FABA2-A79A-4B29-AFF5-C113546EEA27</string>
+						<string>6B8251F2-24D3-4E32-8A97-7BC0123CEEE9</string>
 						<key>Type</key>
 						<string>ActionOutput</string>
 					</dict>
@@ -264,9 +264,9 @@
 					<key>Value</key>
 					<dict>
 						<key>OutputName</key>
-						<string>Ask for Input</string>
+						<string>Renamed Item</string>
 						<key>OutputUUID</key>
-						<string>F65358B7-A320-48E4-B70F-07384A014F52</string>
+						<string>6B8251F2-24D3-4E32-8A97-7BC0123CEEE9</string>
 						<key>Type</key>
 						<string>ActionOutput</string>
 					</dict>
@@ -282,9 +282,9 @@
 							<key>{0, 1}</key>
 							<dict>
 								<key>OutputName</key>
-								<string>PDF</string>
+								<string>Ask for Input</string>
 								<key>OutputUUID</key>
-								<string>DD2FABA2-A79A-4B29-AFF5-C113546EEA27</string>
+								<string>F65358B7-A320-48E4-B70F-07384A014F52</string>
 								<key>Type</key>
 								<string>ActionOutput</string>
 							</dict>
@@ -309,9 +309,9 @@
 					<key>Value</key>
 					<dict>
 						<key>OutputName</key>
-						<string>PDF</string>
+						<string>Renamed Item</string>
 						<key>OutputUUID</key>
-						<string>DD2FABA2-A79A-4B29-AFF5-C113546EEA27</string>
+						<string>0426AADB-E9C7-46B4-84C0-770C8DBF9738</string>
 						<key>Type</key>
 						<string>ActionOutput</string>
 					</dict>
@@ -345,9 +345,9 @@
 					<key>Value</key>
 					<dict>
 						<key>OutputName</key>
-						<string>PDF</string>
+						<string>Renamed Item</string>
 						<key>OutputUUID</key>
-						<string>DD2FABA2-A79A-4B29-AFF5-C113546EEA27</string>
+						<string>6B8251F2-24D3-4E32-8A97-7BC0123CEEE9</string>
 						<key>Type</key>
 						<string>ActionOutput</string>
 					</dict>
@@ -388,23 +388,16 @@
 	<key>WFWorkflowInputContentItemClasses</key>
 	<array>
 		<string>WFImageContentItem</string>
-		<string>WFAVAssetContentItem</string>
 		<string>WFGenericFileContentItem</string>
-		<string>WFFolderContentItem</string>
-		<string>WFPDFContentItem</string>
 		<string>WFStringContentItem</string>
 		<string>WFRichTextContentItem</string>
 		<string>WFSafariWebPageContentItem</string>
-		<string>WFURLContentItem</string>
 		<string>WFArticleContentItem</string>
 		<string>WFDCMapsLinkContentItem</string>
 		<string>WFLocationContentItem</string>
 		<string>WFContactContentItem</string>
-		<string>WFEmailAddressContentItem</string>
-		<string>WFPhoneNumberContentItem</string>
-		<string>WFAppStoreAppContentItem</string>
-		<string>WFiTunesProductContentItem</string>
 		<string>WFDateContentItem</string>
+		<string>WFPDFContentItem</string>
 	</array>
 	<key>WFWorkflowMinimumClientVersion</key>
 	<integer>1113</integer>

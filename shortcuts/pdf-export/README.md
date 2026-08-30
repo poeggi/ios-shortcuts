@@ -9,9 +9,8 @@ Several images become one multi-page PDF. Then it offers to:
 - **Save to Files** - asks for a file name, then the normal save dialog.
 - **Share** - hands the PDF straight to the share sheet.
 
-It is meant to name the PDF after what you shared. A web page by its title. A
-file by its filename. Plain text by its own first line, since text has no
-filename. That part is built but does not work. See Known issues.
+It names the PDF after what you shared. A web page by its title. A file by
+its filename. Plain text by its own first line, since text has no filename.
 
 ## Install
 
@@ -34,9 +33,9 @@ See the install link on https://poeggi.github.io/ios-shortcuts/
    the Replace Text output. Then **Set Name** of the PDF to that answer. Then
    **Save File** on the renamed item, **Ask Where to Save** on.
 10. Share branch: **Share**, input the Set Name output.
-11. Details (i) > **Show in Share Sheet** on. Share Sheet Types: leave only
-    Text, Rich Text, Images, URLs, Safari web pages, Files, PDFs. TODO: all
-    18 types are still enabled, contacts and Maps links included.
+11. Details (i) > **Show in Share Sheet** on. Share Sheet Types: Text, Rich
+    Text, Images, Files, PDFs, Safari web pages, Articles, Maps links,
+    Locations, Contacts, Dates.
 
 Three things to watch while building it:
 
@@ -49,17 +48,13 @@ Three things to watch while building it:
 ## Known issues
 
 The steps above are the intended build. `sequence.md` is what the published
-link really contains. The naming does not work in it at all.
+link really contains. Two differences are left.
 
-- **Set Name's output is never used.** All three branches take `PDF`, the raw
-  Make PDF output. So every branch gets an unnamed file.
-- **The Save branch Set Name is inverted.** It reads `Set Name of
-  [Ask for Input], name: [PDF]`. The two chips need swapping.
 - **The rename prompt pre-fills from `Name`, not `Updated Text`.** It offers
   the untrimmed value. Text shared from Notes fills the field with the whole
   note.
-
-Fixing the first two makes the name work. The third makes it sensible for text.
+- **Don't Include File Extension is off** on both Set Name actions. The name
+  you give replaces the whole filename, so the `.pdf` can go missing.
 
 ## Archived copy
 

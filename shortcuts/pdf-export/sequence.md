@@ -6,15 +6,15 @@ Do not edit by hand; re-run the script after re-sharing the shortcut.
 | | |
 |---|---|
 | Published name | PDF Export |
-| Record | `c74fd0e9d5ca44779cc5d71ec335db47` |
-| Shared | 2026-08-30 14:59 UTC |
+| Record | `607b9640b279421eb17dc8d112db2ad5` |
+| Shared | 2026-08-30 17:40 UTC |
 | Signing | APPROVED |
-| Certificate expires | 2027-09-22 |
+| Certificate expires | 2027-09-23 |
 | Runs as | ActionExtension, Watch |
-| Accepts | 18 content types |
+| Accepts | 11 content types |
 | Actions | 15 |
 | Icon | glyph 61697, #ff4351 |
-| Archived | `pdf-export.plist` 11877 B, `pdf-export.shortcut` 23455 B, `pdf-export.png` 42810 B |
+| Archived | `pdf-export.plist` 11619 B, `pdf-export.shortcut` 23364 B, `pdf-export.png` 42810 B |
 
 ## Steps
 
@@ -33,37 +33,30 @@ Do not edit by hand; re-run the script after re-sharing the shortcut.
    - items: Preview, Save to Files, Share
    - prompt: Export as PDF
 Case "Preview"
-    7. Quick Look of [PDF]
+    7. Quick Look of [Renamed Item]
 Case "Save to Files"
     8. Ask for Input
        - multiline: off
        - default answer: [Name]
        - prompt: File Name
-    9. Set Name of [Ask for Input]
-       - name: [PDF]
-    10. Save File of [PDF]
+    9. Set Name of [Renamed Item]
+       - name: [Ask for Input]
+    10. Save File of [Renamed Item]
 Case "Share"
-    11. Share of [PDF]
+    11. Share of [Renamed Item]
 End Choose from Menu
 ```
 
 ## Accepted share sheet input
 
 - `WFImageContentItem`
-- `WFAVAssetContentItem`
 - `WFGenericFileContentItem`
-- `WFFolderContentItem`
-- `WFPDFContentItem`
 - `WFStringContentItem`
 - `WFRichTextContentItem`
 - `WFSafariWebPageContentItem`
-- `WFURLContentItem`
 - `WFArticleContentItem`
 - `WFDCMapsLinkContentItem`
 - `WFLocationContentItem`
 - `WFContactContentItem`
-- `WFEmailAddressContentItem`
-- `WFPhoneNumberContentItem`
-- `WFAppStoreAppContentItem`
-- `WFiTunesProductContentItem`
 - `WFDateContentItem`
+- `WFPDFContentItem`
