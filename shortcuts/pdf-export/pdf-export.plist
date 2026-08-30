@@ -407,9 +407,19 @@
 		<string>WFDateContentItem</string>
 	</array>
 	<key>WFWorkflowMinimumClientVersion</key>
-	<integer>1106</integer>
+	<integer>1113</integer>
 	<key>WFWorkflowMinimumClientVersionString</key>
-	<string>1106</string>
+	<string>1113</string>
+	<key>WFWorkflowNoInputBehavior</key>
+	<dict>
+		<key>Name</key>
+		<string>WFWorkflowNoInputBehaviorAskForInput</string>
+		<key>Parameters</key>
+		<dict>
+			<key>ItemClass</key>
+			<string>WFGenericFileContentItem</string>
+		</dict>
+	</dict>
 	<key>WFWorkflowOutputContentItemClasses</key>
 	<array/>
 	<key>WFWorkflowTypes</key>

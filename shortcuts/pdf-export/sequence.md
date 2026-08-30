@@ -6,14 +6,14 @@ Do not edit by hand; re-run the script after re-sharing the shortcut.
 | | |
 |---|---|
 | Published name | PDF Export |
-| Record | `ed01ebfbfa4741008a6463c9539f064d` |
-| Shared | 2026-08-30 11:01 UTC |
+| Record | `c74fd0e9d5ca44779cc5d71ec335db47` |
+| Shared | 2026-08-30 14:59 UTC |
 | Signing | APPROVED |
-| Certificate expires | 2027-09-28 |
+| Certificate expires | 2027-09-22 |
 | Runs as | ActionExtension, Watch |
 | Accepts | 18 content types |
 | Actions | 15 |
-| Archived | `pdf-export.plist` 11636 B, `pdf-export.shortcut` 23385 B |
+| Archived | `pdf-export.plist` 11877 B, `pdf-export.shortcut` 23455 B |
 
 ## Steps
 
