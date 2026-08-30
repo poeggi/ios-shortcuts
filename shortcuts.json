@@ -7,7 +7,6 @@
       "summary": "Share sheet action. Turns text, images, a web page or a file into a PDF, then asks: Preview it, or Save it through the Files save dialog.",
       "tags": ["share sheet", "pdf", "files"],
       "icloud": null,
-      "source": "shortcuts/export-as-pdf/ExportAsPDF.shortcut",
       "notes": "shortcuts/export-as-pdf/README.md"
     }
   ]

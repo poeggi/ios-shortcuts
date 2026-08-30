@@ -82,9 +82,9 @@
   <div id="list"></div>
   <footer>
     <p>Install links go to iCloud, the only source iOS accepts for a
-    shortcut from the web. The <code>.shortcut</code> files in the repo are
-    source only, not installable: since iOS 15 a shortcut must be signed
-    on macOS before iOS will import it.</p>
+    shortcut from the web. Every shortcut here is built by hand in the
+    Shortcuts app; the repo holds links and notes, never
+    <code>.shortcut</code> files.</p>
     <p><a href="https://github.com/poeggi/ios-shortcuts">Source on GitHub</a></p>
   </footer>
 </main>
@@ -103,13 +103,11 @@ fetch('shortcuts.json')
         : `<span class="btn pending">Not published yet</span>`;
       const notes = s.notes
         ? `<a class="link" href="${REPO}${esc(s.notes)}">Details</a>` : '';
-      const src = s.source
-        ? `<a class="link" href="${REPO}${esc(s.source)}">Source</a>` : '';
       return `<div class="card">
         <h2>${esc(s.name)}</h2>
         <p>${esc(s.summary)}</p>
         ${tags ? `<div class="tags">${tags}</div>` : ''}
-        <div class="row">${install}${notes}${src}</div>
+        <div class="row">${install}${notes}</div>
       </div>`;
     }).join('');
   })

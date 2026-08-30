@@ -4,9 +4,8 @@ Collection of iOS Shortcuts, with one-tap install links.
 
 **https://poeggi.github.io/ios-shortcuts/**
 
-Open that page on the iPhone and tap Install. Each Install button is an
-`icloud.com/shortcuts/...` link, which is the only thing iOS accepts as a
-web install.
+Open that page on the iPhone and tap Install. Every Install button is an
+`icloud.com/shortcuts/...` link.
 
 ## The shortcuts
 
@@ -14,30 +13,30 @@ web install.
 |---|---|---|
 | [Export as PDF](shortcuts/export-as-pdf/) | Share sheet: text, images, a web page or a file becomes a PDF, then Preview or Save to Files | not published yet |
 
-## Why there are no downloadable .shortcut files here
+## Links only, never files
 
-Since iOS 15 a `.shortcut` file must be signed with an Apple Encrypted Archive
-before iOS will import it. Signing needs macOS (`shortcuts sign`); it cannot be
-done on-device, and Settings > Shortcuts > Allow Untrusted Shortcuts does not
-lift the requirement. Tapping an unsigned file or passing its URL to
-`shortcuts://import-shortcut` fails with "the shortcut URL provided was invalid".
+Every shortcut here is built by hand in the Shortcuts app and shared as an
+iCloud link. This repo holds those links and a note on what each shortcut
+does. It holds no `.shortcut` files, on purpose:
 
-So the install links point at iCloud, and the `.shortcut` files kept in this
-repo are **source only**: readable XML plists, useful for diffing and review,
-not installable.
+- Since iOS 15 an unsigned `.shortcut` file cannot be imported at all. Signing
+  needs macOS, or Apple's own Share > File > Anyone flow. Settings > Shortcuts
+  > Allow Untrusted Shortcuts does not lift that.
+- A signed export is an opaque binary. It installs, but it cannot be read or
+  diffed, so version control adds nothing over the iCloud link.
+- There is no round trip. The Shortcuts app is the only editor, so a file in a
+  repo could never be edited and republished anyway.
 
 ## Adding a shortcut
 
-1. Build or edit it in the Shortcuts app on the iPhone.
-2. Shortcut details (the ... menu) > Share > **Copy iCloud Link**.
+1. Build or edit it in the Shortcuts app.
+2. Long-press it > Share > **iCloud Link** > Copy.
 3. Add an entry to `shortcuts.json` with that link in `icloud`.
-4. Optionally drop the exported `.shortcut` file under `shortcuts/<slug>/` as source.
 
-The website is generated from `shortcuts.json`, so step 3 is all that is
-strictly needed.
+The website renders `shortcuts.json`, so step 3 is the whole job.
 
 ## Note on iCloud links
 
-An iCloud link is a snapshot. If you change the shortcut, re-share it and
-replace the link - the old one keeps serving the old version. Deleting the
-shortcut from your library eventually breaks the link.
+An iCloud link is a snapshot. Change the shortcut and you have to re-share and
+replace the link, or it keeps serving the old version. Deleting the shortcut
+from your library eventually breaks the link.
