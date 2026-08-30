@@ -1,4 +1,4 @@
-# poegg's iOS Shortcuts
+## poeggi's iOS Shortcuts
 
 Collection of iOS Shortcuts, with one-tap install links.
 
