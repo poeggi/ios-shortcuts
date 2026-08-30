@@ -4,8 +4,12 @@ Collection of iOS Shortcuts, with one-tap install links.
 
 **https://poeggi.github.io/ios-shortcuts/**
 
-Open that page on the iPhone and tap Install. Every Install button is an
-`icloud.com/shortcuts/...` link.
+Open that page on the iPhone and tap **Install**, which is an
+`icloud.com/shortcuts/...` link and takes one tap.
+
+Next to it, **Mirror** downloads the signed copy kept in this repo. Safari
+files it away rather than opening it, so tap it once in Files to import it.
+That path does not depend on Apple keeping the iCloud link alive.
 
 ## The shortcuts
 

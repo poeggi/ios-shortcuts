@@ -66,6 +66,11 @@
     background: var(--chip); color: var(--dim); font-weight: 500;
     pointer-events: none;
   }
+  .btn.mirror {
+    background: transparent; color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 10px 21px;
+  }
   .link { color: var(--accent); text-decoration: none; font-size: 14px; }
   footer {
     margin-top: 34px; padding-top: 20px;
@@ -81,10 +86,15 @@
   <p class="lede">Open website on iPhone or iPad and tap Install.</p>
   <div id="list"></div>
   <footer>
-    <p>Install links go to iCloud, the only source iOS accepts for a
-    shortcut from the web. Every shortcut here is built by hand in the
-    Shortcuts app; the repo holds links and notes, never
-    <code>.shortcut</code> files.</p>
+    <p><b>Install</b> goes to iCloud and takes one tap. That link depends on
+    Apple, so every shortcut is also mirrored here as the signed file Apple
+    produced.</p>
+    <p><b>Mirror</b> downloads that file. Safari puts it in Files rather than
+    opening it, so tap it there once to import it into Shortcuts. Use it if the
+    iCloud link ever stops working.</p>
+    <p>Every shortcut is built by hand in the Shortcuts app. Each one is also
+    kept as a readable XML property list in the repo, which is what makes it
+    rebuildable if both the link and the signature expire.</p>
     <p><a href="https://github.com/poeggi/ios-shortcuts">Source on GitHub</a></p>
   </footer>
 </main>
@@ -101,13 +111,16 @@ fetch('shortcuts.json')
       const install = s.icloud
         ? `<a class="btn" href="${esc(s.icloud)}">Install</a>`
         : `<span class="btn pending">Not published yet</span>`;
+      const file = `shortcuts/${encodeURIComponent(s.slug)}/${encodeURIComponent(s.slug)}.shortcut`;
+      const mirror = s.slug && s.mirror !== false
+        ? `<a class="btn mirror" href="${file}" download>Mirror</a>` : '';
       const notes = s.notes
         ? `<a class="link" href="${REPO}${esc(s.notes)}">Details</a>` : '';
       return `<div class="card">
         <h2>${esc(s.name)}</h2>
         <p>${esc(s.summary)}</p>
         ${tags ? `<div class="tags">${tags}</div>` : ''}
-        <div class="row">${install}${notes}</div>
+        <div class="row">${install}${mirror}${notes}</div>
       </div>`;
     }).join('');
   })
