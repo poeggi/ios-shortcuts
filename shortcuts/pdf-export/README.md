@@ -36,7 +36,7 @@ See the install link on https://poeggi.github.io/ios-shortcuts/
    **Save File** on that renamed item, **Ask Where to Save** on.
 10. Share branch: **Share**, input the Set Name output.
 11. Details (i) > **Show in Share Sheet** on > Share Sheet Types: leave only
-    Text, Rich Text, Images, URLs, Safari web pages, Files, PDFs. Not done yet
+    Text, Rich Text, Images, URLs, Safari web pages, Files, PDFs. TODO
     - all 18 types are still enabled, including contacts, phone numbers, dates
     and Maps links.
 
