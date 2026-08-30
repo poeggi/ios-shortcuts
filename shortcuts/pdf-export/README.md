@@ -45,17 +45,6 @@ Three things to watch while building it:
 - "Make sure to pass items to the Make PDF action" is a static editor warning.
   Shortcuts cannot know at edit time that the share sheet will supply input.
 
-## Known issues
-
-The steps above are the intended build. `sequence.md` is what the published
-link really contains. Two differences are left.
-
-- **The rename prompt pre-fills from `Name`, not `Updated Text`.** It offers
-  the untrimmed value. Text shared from Notes fills the field with the whole
-  note.
-- **Don't Include File Extension is off** on both Set Name actions. The name
-  you give replaces the whole filename, so the `.pdf` can go missing.
-
 ## Archived copy
 
 - `sequence.md` - what the published version actually does, action by action.
