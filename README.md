@@ -1,8 +1,8 @@
-# iOS Shortcuts
+# poegg's iOS Shortcuts
 
-My collection of iOS Shortcuts, with one-tap install links.
+Collection of iOS Shortcuts, with one-tap install links.
 
-**Website: https://poeggi.github.io/ios-shortcuts/**
+**https://poeggi.github.io/ios-shortcuts/**
 
 Open that page on the iPhone and tap Install. Each Install button is an
 `icloud.com/shortcuts/...` link, which is the only thing iOS accepts as a
