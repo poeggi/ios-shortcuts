@@ -62,6 +62,12 @@ archive still match what the link publishes?
 The website renders `shortcuts.json`, so step 3 is what publishes it. Step 4 is
 what makes the Mirror button work and what records the action sequence.
 
+**Rule: every shortcut ships its icon.** `<slug>.png` is not optional. The
+website shows it on the card, so an entry without one looks broken. Step 4
+fetches it automatically; never commit a shortcut folder without it, and if the
+icon changes in the Shortcuts app, re-share and re-run step 4 so the site
+matches.
+
 Re-sharing an edited shortcut always mints a **new** link, so an edit means
 repeating steps 2 to 5.
 

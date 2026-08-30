@@ -15,6 +15,12 @@
     --accent: #007aff;
     --accent-text: #ffffff;
     --chip: #ececf1;
+    --radius-card: 16px;
+    --radius-icon: 12px;
+    --radius-pill: 100px;
+    --pad-card: 14px 16px;
+    --gap: 10px;
+    --tap: 44px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -31,41 +37,54 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    padding: max(env(safe-area-inset-top), 24px) 16px 48px;
+    padding: max(env(safe-area-inset-top), 20px) 16px 40px;
     background: var(--bg);
     color: var(--text);
     font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
   main { max-width: 720px; margin: 0 auto; }
-  h1 { font-size: 30px; letter-spacing: -0.02em; margin: 0 0 6px; }
-  .lede { color: var(--dim); margin: 0 0 28px; }
+  h1 { font-size: 28px; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .lede { color: var(--dim); font-size: 15px; margin: 0 0 20px; }
+
   .card {
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 14px;
+    border-radius: var(--radius-card);
+    padding: var(--pad-card);
+    margin-bottom: var(--gap);
   }
-  .head { display: flex; align-items: center; gap: 12px; margin: 0 0 8px; }
+  .head {
+    display: flex; align-items: center; flex-wrap: wrap;
+    gap: 8px 12px; margin-bottom: 10px;
+  }
   .icon {
-    width: 52px; height: 52px; flex: 0 0 52px;
-    border-radius: 13px; display: block;
+    width: 44px; height: 44px; flex: 0 0 44px;
+    border-radius: var(--radius-icon); display: block;
+    background: var(--chip);
   }
-  .card h2 { font-size: 19px; margin: 0; letter-spacing: -0.01em; }
-  .card p { margin: 0 0 14px; color: var(--dim); font-size: 15px; }
-  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 14px; }
+  .card h2 {
+    flex: 1 1 auto; min-width: 0;
+    font-size: 18px; margin: 0; letter-spacing: -0.01em;
+  }
+  .tags {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    margin-left: auto; justify-content: flex-end;
+  }
   .tag {
     background: var(--chip); color: var(--dim);
-    font-size: 12px; padding: 3px 9px; border-radius: 100px;
+    font-size: 11px; line-height: 18px; padding: 0 8px;
+    border-radius: var(--radius-pill); white-space: nowrap;
   }
-  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .card p { margin: 0 0 12px; color: var(--dim); font-size: 15px; }
+  .row { display: flex; flex-wrap: wrap; gap: var(--gap); align-items: center; }
   .btn {
-    display: inline-block; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    text-decoration: none;
     background: var(--accent); color: var(--accent-text);
-    font-weight: 600; font-size: 16px;
-    padding: 11px 22px; border-radius: 100px;
-    min-height: 44px; line-height: 22px;
+    font-weight: 600; font-size: 15px;
+    padding: 0 20px; border-radius: var(--radius-pill);
+    min-height: var(--tap); border: 1px solid transparent;
   }
   .btn.pending {
     background: var(--chip); color: var(--dim); font-weight: 500;
@@ -73,15 +92,19 @@
   }
   .btn.mirror {
     background: transparent; color: var(--accent);
-    border: 1px solid var(--accent);
-    padding: 10px 21px;
+    border-color: var(--accent);
   }
-  .link { color: var(--accent); text-decoration: none; font-size: 14px; }
+  .link {
+    color: var(--accent); text-decoration: none; font-size: 14px;
+    display: inline-flex; align-items: center; min-height: var(--tap);
+    padding: 0 4px;
+  }
   footer {
-    margin-top: 34px; padding-top: 20px;
+    margin-top: 28px; padding-top: 18px;
     border-top: 1px solid var(--line);
     color: var(--dim); font-size: 13px;
   }
+  footer p { margin: 0 0 10px; }
   footer a { color: var(--accent); }
 </style>
 </head>
@@ -112,22 +135,24 @@ fetch('shortcuts.json')
   .then(data => {
     if (data.title) document.querySelector('h1').textContent = data.title;
     document.getElementById('list').innerHTML = data.shortcuts.map(s => {
+      const dir = s.slug ? `shortcuts/${encodeURIComponent(s.slug)}/${encodeURIComponent(s.slug)}` : '';
+      const icon = dir
+        ? `<img class="icon" src="${dir}.png" width="44" height="44" alt="" onerror="this.remove()">`
+        : '';
       const tags = (s.tags || []).map(t => `<span class="tag">${esc(t)}</span>`).join('');
       const install = s.icloud
         ? `<a class="btn" href="${esc(s.icloud)}">Install</a>`
         : `<span class="btn pending">Not published yet</span>`;
-      const file = `shortcuts/${encodeURIComponent(s.slug)}/${encodeURIComponent(s.slug)}.shortcut`;
-      const mirror = s.slug && s.mirror !== false
-        ? `<a class="btn mirror" href="${file}" download>Mirror</a>` : '';
+      const mirror = dir && s.mirror !== false
+        ? `<a class="btn mirror" href="${dir}.shortcut" download>Mirror</a>` : '';
       const notes = s.notes
         ? `<a class="link" href="${REPO}${esc(s.notes)}">Details</a>` : '';
-      const icon = s.slug
-        ? `<img class="icon" src="shortcuts/${encodeURIComponent(s.slug)}/${encodeURIComponent(s.slug)}.png"
-             alt="" onerror="this.remove()">` : '';
       return `<div class="card">
-        <div class="head">${icon}<h2>${esc(s.name)}</h2></div>
+        <div class="head">
+          ${icon}<h2>${esc(s.name)}</h2>
+          ${tags ? `<div class="tags">${tags}</div>` : ''}
+        </div>
         <p>${esc(s.summary)}</p>
-        ${tags ? `<div class="tags">${tags}</div>` : ''}
         <div class="row">${install}${mirror}${notes}</div>
       </div>`;
     }).join('');
