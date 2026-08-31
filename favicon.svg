@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Share">
+  <!-- Copyright (C) 2026 Kai Poggensee
+       SPDX-License-Identifier: GPL-3.0-or-later -->
+  <rect width="64" height="64" rx="14" fill="#007aff"/>
+  <g fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M23 28h-4a5 5 0 0 0-5 5v13a5 5 0 0 0 5 5h26a5 5 0 0 0 5-5V33a5 5 0 0 0-5-5h-4"/>
+    <path d="M32 39V13"/>
+    <path d="M24 21l8-8 8 8"/>
+  </g>
+</svg>
