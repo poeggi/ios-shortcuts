@@ -93,3 +93,19 @@ repeating steps 2 to 5.
 An iCloud link is a snapshot. Change the shortcut and you have to re-share and
 replace the link, or it keeps serving the old version. Deleting the shortcut
 from your library eventually breaks the link.
+
+## License
+
+poeggi's iOS Shortcuts is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version. It is distributed WITHOUT ANY WARRANTY, without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See LICENSE
+for the full text.
+
+Copyright (C) 2026 Kai Poggensee
+
+This covers every file in the repository, the shortcuts themselves included: a
+`<slug>.plist` is the readable source of that shortcut, and the `.shortcut` and
+`.png` beside it are what Apple builds from it. Generated files carry no notice
+of their own; this section is what licenses them.

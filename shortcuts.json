@@ -1,5 +1,6 @@
 {
   "title": "poeggi's iOS Shortcuts",
+  "license": "GPL-3.0-or-later",
   "shortcuts": [
     {
       "name": "PDF Export",

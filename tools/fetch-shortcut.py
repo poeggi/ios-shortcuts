@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026 Kai Poggensee
+# SPDX-License-Identifier: GPL-3.0-or-later
 """Pull every published shortcut back down from iCloud and write its archive.
 
 Reads shortcuts.json, and for each entry with an `icloud` link:

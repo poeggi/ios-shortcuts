@@ -1,3 +1,6 @@
+/* Copyright (C) 2026 Kai Poggensee
+   SPDX-License-Identifier: GPL-3.0-or-later */
+
 /* Shared rendering for every page. The index and each shortcut's own page
    build their card and action list from the same functions, so a shortcut
    added to shortcuts.json later looks exactly like the ones already there.

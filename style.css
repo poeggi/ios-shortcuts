@@ -1,3 +1,6 @@
+/* Copyright (C) 2026 Kai Poggensee
+   SPDX-License-Identifier: GPL-3.0-or-later */
+
 /* One stylesheet for every page and every shortcut entry. Sizes, radii and
    spacing are tokens, so changing one value here restyles all cards and all
    action lists at once, including shortcuts added later. */
